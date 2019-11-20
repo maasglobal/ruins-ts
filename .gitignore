@@ -1,0 +1,8 @@
+*.swp
+.DS_Store
+lib
+node_modules
+coverage
+package-lock.json
+yarn-error.log
+src/readme.ts
