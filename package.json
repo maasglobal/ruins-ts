@@ -7,10 +7,10 @@
     "lib/**/*"
   ],
   "scripts": {
-    "test": "jest --config jestconfig.json --no-cache",
+    "test": "jest --no-cache",
     "clean": "rm -rf lib",
     "build": "yarn clean && tsc",
-    "eslint": "eslint --max-warnings=0 '**/*.{ts,json}' --ignore-path .gitignore",
+    "eslint": "eslint --max-warnings=0 '**/*.{ts,js,json}' --ignore-path .gitignore",
     "lint": "yarn eslint",
     "ci": "yarn lint && yarn test && yarn build",
     "deploy-npm": "yarn ci && yarn publish"
