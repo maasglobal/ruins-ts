@@ -35,5 +35,17 @@
     "ts-jest": "^24.0.2",
     "typescript": "^3.5.1"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/maasglobal/ruins-ts.git"
+  },
+  "keywords": [
+    "fp-ts",
+    "typescript"
+  ],
+  "bugs": {
+    "url": "https://github.com/maasglobal/ruins-ts/issues"
+  },
+  "homepage": "https://github.com/maasglobal/ruins-ts/",
   "license": "MIT"
 }
