@@ -13,5 +13,6 @@ export const crashObject = (error: unknown): Error => {
 };
 
 export const crash = (error: unknown): IO<never> => () => {
+  // eslint-disable-next-line fp/no-throw
   throw crashObject(error);
 };
