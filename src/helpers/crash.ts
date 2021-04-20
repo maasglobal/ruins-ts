@@ -1,11 +1,12 @@
-import { pipe } from 'fp-ts/lib/pipeable';
 import * as Either_ from 'fp-ts/lib/Either';
+import { pipe } from 'fp-ts/lib/function';
 import { IO } from 'fp-ts/lib/IO';
+import * as Json_ from 'fp-ts/lib/Json';
 
 export const crashMessage = (originalError: unknown): string =>
   pipe(
-    Either_.stringifyJSON(originalError, () => null),
-    Either_.getOrElse((_encodingError: null) => String(originalError)),
+    Json_.stringify(originalError),
+    Either_.getOrElse(() => String(originalError)),
   );
 export const crashObject = (error: unknown): Error => {
   const errorMessage = crashMessage(error);

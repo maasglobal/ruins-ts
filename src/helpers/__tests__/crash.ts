@@ -1,4 +1,4 @@
-import { crashMessage, crashObject, crash } from '../crash';
+import { crash, crashMessage, crashObject } from '../crash';
 
 describe('crash library', () => {
   const exampleJSON: unknown = { foo: 123 };
