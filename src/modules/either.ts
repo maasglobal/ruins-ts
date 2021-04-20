@@ -1,7 +1,7 @@
-import { pipe } from 'fp-ts/lib/pipeable';
-import { IO } from 'fp-ts/lib/IO';
 import { Either } from 'fp-ts/lib/Either';
 import * as Either_ from 'fp-ts/lib/Either';
+import { pipe } from 'fp-ts/lib/function';
+import { IO } from 'fp-ts/lib/IO';
 
 import { crash } from '../helpers/crash';
 import { fromIO } from './io';
