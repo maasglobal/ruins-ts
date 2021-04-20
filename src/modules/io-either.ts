@@ -6,8 +6,4 @@ import { fromIO } from './io';
 import { fromEither } from './either';
 
 export const fromIOEither = <E, R>(anIOEither: IOEither<E, R>): R =>
-  pipe(
-    anIOEither,
-    IO_.map(fromEither),
-    fromIO,
-  );
+  pipe(anIOEither, IO_.map(fromEither), fromIO);

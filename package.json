@@ -20,7 +20,7 @@
     "fp-ts": "^2.0.0"
   },
   "devDependencies": {
-    "@types/jest": "^24.0.12",
+    "@types/jest": "^26.0.0",
     "@typescript-eslint/eslint-plugin": "^2.21.0",
     "@typescript-eslint/parser": "^2.21.0",
     "eslint": "^6.8.0",
@@ -31,11 +31,11 @@
     "eslint-plugin-json": "^2.1.0",
     "eslint-plugin-prettier": "^3.1.2",
     "fp-ts": "^2.0.0",
-    "jest": "^25.1.0",
+    "jest": "^26.0.1",
     "monocle-ts": "^2.0.0",
     "prettier": "^1.18.2",
-    "ts-jest": "^25.2.1",
-    "typescript": "^3.5.1"
+    "ts-jest": "^26.4.1",
+    "typescript": "^4.2.4"
   },
   "repository": {
     "type": "git",
