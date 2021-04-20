@@ -1,19 +1,20 @@
 {
   "name": "ruins-ts",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "",
   "main": "lib/ruins.js",
   "files": [
     "lib/**/*"
   ],
   "scripts": {
+    "readme-ts": "python3 .extract_code.py < README.md > src/readme.ts",
     "test": "jest --no-cache",
     "clean": "rm -rf lib",
     "typecheck": "tsc -p src/tsconfig.json",
     "build": "yarn clean && tsc",
     "eslint": "eslint --max-warnings=0 '**/*.{ts,js,json}'",
     "lint": "yarn eslint",
-    "ci": "yarn lint && yarn typecheck && yarn test && yarn build",
+    "ci": "yarn readme-ts && yarn lint && yarn typecheck && yarn test && yarn build",
     "deploy-npm": "yarn ci && yarn publish --non-interactive",
     "deploy-alpha": "yarn deploy-npm --tag alpha"
   },
