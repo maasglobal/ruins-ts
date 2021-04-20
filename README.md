@@ -84,6 +84,35 @@ ruins.fromEither(success) // => 123
 ```
 
 
+## fromThese (function)
+
+Asserts [Right](https://gcanti.github.io/fp-ts/modules/These.ts.html#right-interface) and returns the result.
+
+**Logs warnings to console on [Both](https://gcanti.github.io/fp-ts/modules/These.ts.html#both-interface).**
+
+**Throws a runtime Error on [Left](https://gcanti.github.io/fp-ts/modules/These.ts.html#left-interface).**
+
+#### Signature
+```typescript
+export function fromThese<R>(anThese: These<unknown, R>): R { ... }
+```
+
+#### Example
+```typescript
+import { These } from 'fp-ts/lib/These';
+import * as These_ from 'fp-ts/lib/These';
+import * as ruins from 'ruins-ts';
+
+const failure: These<string, number> = These_.left('error');
+const success: These<string, number> = These_.right(123);
+const neutral: These<string, number> = These_.both('warning', 456);
+
+ruins.fromThese(failure) // => never (throws an exception)
+ruins.fromThese(success) // => 123
+ruins.fromThese(neutral) // => 456 (logs warning)
+```
+
+
 ## fromIO (function)
 
 Executes syncronous side-effects of an [IO](https://gcanti.github.io/fp-ts/modules/IO.ts.html) and returns the result.
@@ -178,19 +207,56 @@ export function fromTaskEither<E, R>(aTaskEither: TaskEither<E, R>): Promise<R> 
 
 #### Example
 ```typescript
-import { TaskEither } from 'fp-ts/lib/Task';
+import { TaskEither } from 'fp-ts/lib/TaskEither';
 import * as ruins from 'ruins-ts';
 
 const failure: TaskEither<string, number> = () => new Promise ((_resolve, reject) => {
   console.log('effect');
-  reject('error');
+  reject(Either_.left('error'));
 });
 
 const success: TaskEither<string, number> = () => new Promise ((resolve, _reject) => {
   console.log('effect');
-  resolve(123);
+  resolve(Either_.right(123));
 });
 
 ruins.fromTaskEither(failure) // => Promise (prints "effect", rejects)
 ruins.fromTaskEither(success) // => Promise (prints "effect", resolves to 123)
+```
+
+
+## fromTaskThese (function)
+
+Executes contained asyncronous side-effects and returns the result wrapped in a promise.
+
+**Breaks referential transparency.**
+
+#### Signature
+```typescript
+export function fromTaskThese<E, R>(aTaskThese: TaskThese<E, R>): Promise<R> { ... }
+```
+
+#### Example
+```typescript
+import { TaskThese } from 'fp-ts/lib/TaskThese';
+import * as ruins from 'ruins-ts';
+
+const failure: TaskThese<string, number> = () => new Promise ((_resolve, reject) => {
+  console.log('effect');
+  reject(These_.left('error'));
+});
+
+const success: TaskThese<string, number> = () => new Promise ((resolve, _reject) => {
+  console.log('effect');
+  resolve(These_.right(123));
+});
+
+const neutral: TaskThese<string, number> = () => new Promise ((resolve, _reject) => {
+  console.log('effect');
+  resolve(These_.both('warning', 456));
+});
+
+ruins.fromTaskThese(failure) // => Promise (prints "effect", rejects)
+ruins.fromTaskThese(success) // => Promise (prints "effect", resolves to 123)
+ruins.fromTaskThese(neutral) // => Promise (prints "effect", logs warning, resolves to 456)
 ```
