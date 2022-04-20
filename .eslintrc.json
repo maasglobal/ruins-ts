@@ -1,7 +1,5 @@
 {
-  "extends": [
-    "eslint-config-maasglobal-ts/strict"
-  ],
+  "extends": ["eslint-config-maasglobal-ts/strict"],
   "overrides": [
     {
       "files": ["src/readme.ts"],
