@@ -16,6 +16,6 @@ describe('ruinTaskOption', () => {
   });
 
   it('should convert none to null', async () => {
-    await expect(ruins.fromTaskOption(exampleTaskOptionN)).rejects.toEqual(null);
+    await expect(ruins.fromTaskOption(exampleTaskOptionN)).resolves.toEqual(null);
   });
 });
