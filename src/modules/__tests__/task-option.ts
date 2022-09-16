@@ -11,11 +11,11 @@ const exampleTaskOptionN: ExampleTaskOption = TaskOption_.none;
 const exampleTaskOptionS: ExampleTaskOption = TaskOption_.some(example);
 
 describe('ruinTaskOption', () => {
-  it('should return value of some', () => {
-    expect(ruins.fromTaskOption(exampleTaskOptionS)).resolves.toEqual(example);
+  it('should return value of some', async () => {
+    await expect(ruins.fromTaskOption(exampleTaskOptionS)).resolves.toEqual(example);
   });
 
-  it('should convert none to null', () => {
-    expect(ruins.fromTaskOption(exampleTaskOptionN)).rejects.toEqual(null);
+  it('should convert none to null', async () => {
+    await expect(ruins.fromTaskOption(exampleTaskOptionN)).resolves.toEqual(null);
   });
 });

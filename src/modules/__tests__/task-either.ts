@@ -15,12 +15,12 @@ const exampleTaskEitherL: ExampleTaskEither = TaskEither_.left(exampleLeft);
 const exampleTaskEitherR: ExampleTaskEither = TaskEither_.right(exampleRight);
 
 describe('ruinTaskEither', () => {
-  it('should return right', () => {
-    expect(ruins.fromTaskEither(exampleTaskEitherR)).resolves.toEqual(exampleRight);
+  it('should return right', async () => {
+    await expect(ruins.fromTaskEither(exampleTaskEitherR)).resolves.toEqual(exampleRight);
   });
 
-  it('should throw left', () => {
-    expect(ruins.fromTaskEither(exampleTaskEitherL)).rejects.toEqual(
+  it('should throw left', async () => {
+    await expect(ruins.fromTaskEither(exampleTaskEitherL)).rejects.toEqual(
       crashObject(exampleLeft),
     );
   });

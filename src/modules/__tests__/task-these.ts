@@ -16,12 +16,12 @@ const exampleTaskTheseR: ExampleTaskThese = TaskThese_.right(exampleRight);
 const exampleTaskTheseB: ExampleTaskThese = TaskThese_.both(exampleLeft, exampleRight);
 
 describe('ruinTaskThese', () => {
-  it('should return right', () => {
-    expect(ruins.fromTaskThese(exampleTaskTheseR)).resolves.toEqual(exampleRight);
+  it('should return right', async () => {
+    await expect(ruins.fromTaskThese(exampleTaskTheseR)).resolves.toEqual(exampleRight);
   });
 
-  it('should throw left', () => {
-    expect(ruins.fromTaskThese(exampleTaskTheseL)).rejects.toEqual(
+  it('should throw left', async () => {
+    await expect(ruins.fromTaskThese(exampleTaskTheseL)).rejects.toEqual(
       crashObject(exampleLeft),
     );
   });
