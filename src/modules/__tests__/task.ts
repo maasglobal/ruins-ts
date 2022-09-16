@@ -17,7 +17,9 @@ const exampleTask: Task<Answer> = async () => {
 
 describe('ruinTask', () => {
   it('should execute side effects', async () => {
-    await expect(ruins.fromTask(exampleTask).then(() => mutableState)).resolves.toEqual(true);
+    await expect(ruins.fromTask(exampleTask).then(() => mutableState)).resolves.toEqual(
+      true,
+    );
   });
 
   it('should return computation return value', async () => {
