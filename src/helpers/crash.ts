@@ -8,7 +8,11 @@ export const crashMessage = (originalError: unknown): string =>
     Json_.stringify(originalError),
     Either_.getOrElse(() => String(originalError)),
   );
+
 export const crashObject = (error: unknown): Error => {
+  if (error instanceof Error) {
+    return error;
+  }
   const errorMessage = crashMessage(error);
   return new Error(errorMessage);
 };
